@@ -1,0 +1,38 @@
+export const mockVacancies = [
+  {
+    id: "8331228",
+    name: "Frontend разработчик в EdTech продукт",
+    alternate_url: "https://hh.ru/vacancy/8331228",
+    salary: { from: 80000, to: 170000, currency: "RUR" },
+    experience: { name: "Опыт 1-3 года" },
+    area: { name: "Набережные Челны" },
+    employer: { name: "Kata Academy" },
+  },
+  {
+    id: "8331229",
+    name: "Frontend разработчик в казино",
+    alternate_url: "https://hh.ru/vacancy/8331229",
+    salary: { from: 30000, to: 970000, currency: "RUR" },
+    experience: { name: "Без опыта" },
+    area: { name: "Уфа" },
+    employer: { name: "777" },
+  },
+  {
+    id: "8331230",
+    name: "Frontend разработчик в стартап",
+    alternate_url: "https://hh.ru/vacancy/8331230",
+    salary: { from: 15000, to: 20000, currency: "RUR" },
+    experience: { name: "Без опыта" },
+    area: { name: "Москва" },
+    employer: { name: "Точно Стрельнет" },
+  },
+  ...Array.from({ length: 7 }, (_, i) => ({
+    id: String(8331231 + i),
+    name: i % 2 === 0 ? "Frontend разработчик в EdTech продукт" : "Frontend разработчик в продукт",
+    alternate_url: `https://hh.ru/vacancy/${8331231 + i}`,
+    salary: { from: 70000, to: 140000, currency: "RUR" },
+    experience: { name: "Опыт 1-3 года" },
+    area: { name: "Москва" },
+    employer: { name: `Компания ${i + 1}` },
+  })),
+];
