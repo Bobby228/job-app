@@ -14,7 +14,7 @@ function App() {
       <Container p={0} strategy="block" size={1000}>
         <SearchInput />
       </Container>
-      <hr style={{border: '0.5px solid rgba(15, 15, 16, 0.2)'}}/>
+      <hr className='divider' />
       <Container p={0} strategy="block" size={1000}>
         <JobsList/>
       </Container>

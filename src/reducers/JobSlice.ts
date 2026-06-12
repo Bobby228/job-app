@@ -18,7 +18,7 @@ interface JobState {
 
 const initialState: JobState = {
   jobsList: [],
-  skills: [],
+  skills: ['JavaScript', 'React', 'Redux', 'Python'],
   isLoading: true,
 
   search: '',

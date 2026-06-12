@@ -1,6 +1,6 @@
 import SkillsInput from "../SkillsInput/SkillsInput.tsx";
 import CityInput from "../CityInput/CityInput.tsx";
-import { Flex } from "@mantine/core";
+import {Flex, Title} from "@mantine/core";
 import { useEffect } from "react";
 import { JobCard } from "../JobCard/JobCard.tsx";
 import styles from "./JobsList.module.css";
@@ -18,6 +18,7 @@ const JobsList = () => {
     page,
     jobsList,
     skills,
+    isLoading
   } = useTypedSelector((state) => state.jobs);
 
   useEffect(() => {
@@ -36,15 +37,20 @@ const JobsList = () => {
       </Flex>
 
       <Flex direction="column" gap={24}>
-        <ul>
-          {jobsList.map((job) => (
-            <li key={job.id} className={styles.liItem}>
-              <JobCard job={job} />
-            </li>
-          ))}
-        </ul>
-
-        <Pag />
+        {isLoading ?
+          <Title>Загрузка...</Title>
+          :
+          <>
+            <ul>
+              {jobsList.map((job) => (
+                <li key={job.id} className={styles.liItem}>
+                  <JobCard job={job}/>
+                </li>
+              ))}
+            </ul>
+            <Pag/>
+          </>
+        }
       </Flex>
     </Flex>
   );

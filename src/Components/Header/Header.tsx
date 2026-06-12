@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Anchor, Flex, Image, Text, Group, ThemeIcon } from '@mantine/core';
-import headerImg from '../../img/image 2.svg';
-import IconUser from "../../img/Vector.svg";
+import headerImg from '../../img/hh.svg';
+import IconUser from "../../img/user.svg";
 import styles from './Header.module.css';
 
 const Header = () => {
