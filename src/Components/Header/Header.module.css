@@ -7,6 +7,10 @@
     background-color: #fff;
 }
 
+.headerLink {
+    text-decoration: none;
+}
+
 .centerNav {
     flex: 1;
     display: flex;

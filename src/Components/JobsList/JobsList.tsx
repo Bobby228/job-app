@@ -7,7 +7,8 @@ import styles from "./JobsList.module.css";
 import { useTypedDispatch, useTypedSelector } from "../../hooks/hooks.ts";
 import { fetchJobs } from "../../reducers/JobThunks.ts";
 import Pag from "../Pagination/Pagination.tsx";
-import { setCity } from "../../reducers/JobSlice.ts";
+import { setSearch, setCity, setSkills, setPage } from "../../reducers/JobSlice";
+import {useSearchParams} from "react-router";
 
 const JobsList = () => {
   const dispatch = useTypedDispatch();
@@ -21,9 +22,34 @@ const JobsList = () => {
     isLoading
   } = useTypedSelector((state) => state.jobs);
 
+  const [params, setParams] = useSearchParams();
+
+  useEffect(() => {
+    dispatch(setSearch(params.get("search") || ""));
+    dispatch(setCity(params.get("city") || ""));
+    dispatch(setPage(Number(params.get("page") || 1)));
+
+    const skillsParam = params.get('skills');
+
+    if (skillsParam) {
+      dispatch(setSkills(skillsParam.split(',')));
+    }
+  }, []);
+
   useEffect(() => {
     dispatch(fetchJobs({ search, city, page, skills }));
   }, [search, city, page, skills]);
+
+  useEffect(() => {
+    const obj: Record<string, string> = {};
+
+    if (search) obj.search = search;
+    if (city) obj.city = city;
+    if (skills.length) obj.skills = skills.join(",");
+    if (page) obj.page = String(page);
+
+    setParams(obj);
+  }, [search, city, skills, page]);
 
   return (
     <Flex mih="100vh" pt={24} pb={84} gap={24}>

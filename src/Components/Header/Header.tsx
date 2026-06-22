@@ -3,18 +3,19 @@ import { Anchor, Flex, Image, Text, Group, ThemeIcon } from '@mantine/core';
 import headerImg from '../../img/hh.svg';
 import IconUser from "../../img/user.svg";
 import styles from './Header.module.css';
+import {Link} from "react-router";
 
 const Header = () => {
   const [active, setActive] = useState<'vacancies' | 'about'>('vacancies');
 
   return (
     <header className={styles.header}>
-      <Anchor href="#" underline="never">
+      <Link to='/' className={styles.headerLink}>
         <Flex align="center" gap={10}>
           <Image src={headerImg} w={30} h={30} alt="logo" />
           <Text fw={600} size="xl" c="black">.FrontEnd</Text>
         </Flex>
-      </Anchor>
+      </Link>
 
       <Group className={styles.centerNav}>
         <Anchor

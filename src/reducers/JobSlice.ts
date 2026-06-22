@@ -18,7 +18,13 @@ interface JobState {
 
 const initialState: JobState = {
   jobsList: [],
-  skills: ['JavaScript', 'React', 'Redux', 'Python'],
+  skills: [
+    'JavaScript',
+    'React',
+    'Redux',
+    'ReduxToolkit',
+    'NextJs'
+  ],
   isLoading: true,
 
   search: '',
@@ -46,6 +52,9 @@ export const jobSlice = createSlice({
     setPage(state, action) {
       state.page = action.payload;
     },
+    setSkills(state, action) {
+      state.skills = action.payload;
+    }
   },
 
   extraReducers: (builder) => {
@@ -69,7 +78,8 @@ export const {
   removeSkill,
   setSearch,
   setCity,
-  setPage
+  setPage,
+  setSkills
 } = jobSlice.actions;
 
 export default jobSlice.reducer;
