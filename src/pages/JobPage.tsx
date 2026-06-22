@@ -2,10 +2,11 @@ import {useParams} from "react-router";
 import {useEffect, useState} from "react";
 import JobCardTemplate from "../Components/JobCardTemplate/JobCardTemplate.tsx";
 import {Box, Card, Container, Flex, Text, Title} from "@mantine/core";
+import type {Job} from "../types.ts";
 
 const JobPage = () => {
   const {id} = useParams();
-  const [job, setJob] = useState(null)
+  const [job, setJob] = useState<Job | null>(null)
 
   useEffect(() => {
     fetch(`https://kata-jobs.onrender.com/api/jobs/${id}`)

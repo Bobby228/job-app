@@ -9,4 +9,5 @@ export interface Job {
   space: string;
   skills: string;
   experience: string;
+  about_company: string;
 }
